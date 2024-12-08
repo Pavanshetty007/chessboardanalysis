@@ -10,7 +10,36 @@ The **Chessboard Analyzer** is a Python-based tool for detecting and annotating 
 - Outputs the count of black and white squares.
 
 ---
+## Approach
 
+To solve the problem of detecting and annotating black and white squares on a chessboard, the following steps were implemented:
+
+1. **Interactive Point Selection:**
+   - A GUI allows the user to click and select four points defining the chessboard's corners. These points are used to create a bounding box for the board.
+
+2. **Homography Transformation:**
+   - The selected points are used to compute a homography matrix, which straightens the chessboard image by removing perspective distortion. 
+   - The output of this step is a top-down, standardized view of the chessboard.
+
+3. **Grid Division:**
+   - The straightened image is divided into an 8x8 grid of squares, corresponding to the chessboard's layout.
+
+4. **Thresholding and Color Detection:**
+   - Each grid cell is analyzed to determine its color (black or white). This is achieved using average intensity values:
+     - High intensity corresponds to a white square.
+     - Low intensity corresponds to a black square.
+   - Thresholding techniques are applied to ensure robust detection even in varying lighting conditions.
+
+5. **Annotation:**
+   - The detected squares are visually annotated on the output image, marking black and white squares distinctly.
+   - The annotated image is saved to the specified output directory.
+
+6. **Counting:**
+   - The program calculates and displays the count of black and white squares detected on the chessboard.
+
+This approach combines image processing techniques such as homography, thresholding, and grid analysis to achieve accurate detection and annotation of chessboard squares.
+
+---
 ## Steps for Running the Program
 
 ### 1. Clone or Download the Project
@@ -95,3 +124,13 @@ ChessboardAnalyzer/
     ├── good_chess4.jpg      # Example chessboard image
     └── another_chess.jpg    # Another example image
 ```
+
+## Additional Notes
+### Interactive Point Selection:
+- Ensure you select the points carefully to avoid incorrect perspective transformations.
+- If the wrong points are selected, restart the script and select the points again.
+### Output Image Dimensions:
+- By default, the output image is 400x400 pixels. You can adjust this size by modifying the width and height variables in the apply_homography() method.
+### Handling Errors:
+- If you encounter errors like "module not found," ensure the required libraries are installed.
+- If points are not selected properly, ensure you're pressing q only after selecting exactly 4 points.
