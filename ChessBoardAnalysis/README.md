@@ -88,11 +88,10 @@ ChessboardAnalyzer/
 │
 ├── chessboard_analyzer.py   # Python script for processing
 ├── README.md                # Documentation (this file)
-├── docs/                    # Directory for documentation images
-│   ├── input_example.jpg    # Example input image
+├── output/                  # Directory for documentation images
 │   ├── annotated_example.jpg # Example output image
 │
 └── input_images/            # Directory for input chessboard images
-    ├── good_chess4.webp     # Example chessboard image
+    ├── good_chess4.jpg      # Example chessboard image
     └── another_chess.jpg    # Another example image
 ```
